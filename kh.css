@@ -35,6 +35,20 @@ header h1 {
 #toggleMenuBtn img {
   width: 30px; /* Adjust the width of the icon inside the button */
 }
+
+#courseMenu h2 {
+  display: inline-block;
+  margin: 20px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  vertical-align: center;
+}
+
+#courseMenu.expanded {
+  height: 300px; /* Height when expanded */
+  overflow-y: scroll;
+}
+
 .container {
   margin-top: 70px;
   display: flex;
@@ -43,8 +57,6 @@ header h1 {
 nav {
   flex: 0 0 200px;
   background-color: #f2f2f2;
-  height: calc(100vh - 70px);
-  overflow-y: auto;
   position: sticky;
   top: 70px;
 }
@@ -78,7 +90,7 @@ nav .dropdown .dropdown-content {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -139,7 +151,8 @@ video {
   background-color: #555;
 }
 
-.quiz button.prevQuestion, .quiz button.goQuestion {
+.quiz button.prevQuestion,
+.quiz button.goQuestion {
   margin-top: 10px;
   padding: 5px 10px;
   background-color: #333;
@@ -148,7 +161,8 @@ video {
   cursor: pointer;
 }
 
-.quiz button.prevQuestion:hover, .quiz button.goQuestion:hover {
+.quiz button.prevQuestion:hover,
+.quiz button.goQuestion:hover {
   background-color: #555;
 }
 
@@ -215,3 +229,74 @@ button.next {
   transform: translateX(-50%);
 }
 
+/* Media Queries for responsiveness */
+
+/* For tablets */
+@media (max-width: 768px) {
+  nav {
+    flex: 0 0 150px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  main {
+    padding: 10px;
+    width: 97.5%;
+  }
+
+  #mapContainer {
+    height: 400px;
+  }
+
+  .content-section {
+    min-height: 500px;
+  }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 18px;
+  }
+
+  #toggleMenuBtn img {
+    width: 20px;
+  }
+
+  nav {
+    flex: 0 0 100px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  main {
+    order: 1;
+    padding: 5px;
+  }
+
+  .quiz button.submitQuestion,
+  .quiz button.prevQuestion,
+  .quiz button.goQuestion {
+    padding: 5px;
+    font-size: 14px;
+  }
+
+  #mapContainer {
+    height: 300px;
+  }
+
+  .content-section {
+    min-height: 400px;
+  }
+
+  button.back,
+  button.next {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

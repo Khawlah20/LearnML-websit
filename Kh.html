@@ -5,19 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Machine Learning Course</title>
   <link rel="stylesheet" href="kh.css">
-  <script src="kh.js" defer></script>
+  
 </head>
 <body>
   <header>
     <img src="11.png" alt="11">
     <h1>Machine Learning Course</h1>
-    <button id="toggleMenuBtn" onclick="toggleMenuHeight()">
+    <button id="toggleMenuBtn" onclick="toggleMenuH()">
       <img src="icon.png" alt="Menu Icon">
     </button>
   </header>
-  
   <div class="container">
-    <nav id="courseMenu">
+    <nav id="courseMenu" >
+      <div class="coursewithlock">
+        <h2>Course Menu</h2>
+        <button class="toggle-btn" onclick="toggleMenuHeight()">-</button>
+      </div>
       <ul id="menuList">
         <li><a href="javascript:void(0)" class="menu-link" onclick="showSection('introduction')">Introduction</a></li>
         <!-- Lesson 1 -->
@@ -62,11 +65,59 @@
           <div id="lesson5Dropdown" class="dropdown-content">
             <a href="javascript:void(0)" class="menu-link" onclick="showSection('lesson5')">Content</a>
             <a href="javascript:void(0)" class="menu-link" onclick="showSection('video5')">Video</a>
-            <a href="javascript:void(0)" class="menu-link" onclick="showSection('quiz5')">Quiz 5</a>
           </div>
         </li>
+        <!-- Lesson 6 -->
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown('lesson6Dropdown')">Lesson 6: Data Cleaning</a>
+          <div id="lesson6Dropdown" class="dropdown-content">
+            <a href="javascript:void(0)" class="menu-link" onclick="showSection('lesson6')">Content</a>
+            <a href="javascript:void(0)" class="menu-link" onclick="showSection('video6')">Video</a>
+          </div>
+        </li>
+        <!-- Lesson 7 -->
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown('lesson7Dropdown')">Lesson 7: DataSet </a>
+          <div id="lesson7Dropdown" class="dropdown-content">
+            <a href="javascript:void(0)" class="menu-link" onclick="showSection('lesson7')">Content</a>
+            <a href="javascript:void(0)" class="menu-link" onclick="showSection('video7')">Video</a>
+          </div>
+        </li>
+         <!-- Lesson 8 -->
+         <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown('lesson8Dropdown')">Lesson 8: Modeling </a>
+          <div id="lesson8Dropdown" class="dropdown-content">
+            <a href="javascript:void(0)" class="menu-link" onclick="showSection('lesson8')">Content</a>
+            <a href="javascript:void(0)" class="menu-link" onclick="showSection('video8')">Video</a>
+          </div>
+        </li>
+         <!-- Lesson 9 -->
+         <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown('lesson9Dropdown')">Lesson 9: Model performance </a>
+          <div id="lesson9Dropdown" class="dropdown-content">
+            <a href="javascript:void(0)" class="menu-link" onclick="showSection('lesson9')">Content</a>
+            <a href="javascript:void(0)" class="menu-link" onclick="showSection('video9')">Video</a>
+          </div>
+        </li>
+           <!-- Lesson 10 -->
+           <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown('lesson10Dropdown')">Lesson 10: Start Coding </a>
+            <div id="lesson10Dropdown" class="dropdown-content">
+              <a href="javascript:void(0)" class="menu-link" onclick="showSection('lesson10')">Content</a>
+              <a href="javascript:void(0)" class="menu-link" onclick="showSection('video10')">Video</a>
+            </div>
+          </li>
+                 <!-- Lesson 11 -->
+                 <li class="dropdown">
+                  <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown('lesson11Dropdown')">Lesson 11: Evaluate the model </a>
+                  <div id="lesson11Dropdown" class="dropdown-content">
+                    <a href="javascript:void(0)" class="menu-link" onclick="showSection('lesson11')">Content</a>
+                    <a href="javascript:void(0)" class="menu-link" onclick="showSection('video11')">Video</a>
+                  </div>
+                </li>
         <li><a href="javascript:void(0)" class="menu-link" onclick="showSection('map')">Map</a></li>
-        <li><a href="javascript:void(0)" class="menu-link" onclick="showSection('video')">Video</a></li>
+        <li><a href="javascript:void(0)" class="menu-link" onclick="showSection('video12')">Video A</a></li>
+        <li><a href="javascript:void(0)" class="menu-link" onclick="showSection('video13')">Video B</a></li>
       </ul>
     </nav>
     <main>
@@ -79,6 +130,9 @@
         </video>
         <button class="next" onclick="navigate('introduction', 'lesson1')">Next</button>
       </section>
+
+        <!-- Lesson 1 -->
+
       <section id="lesson1" class="content-section">
         <h2>Lesson 1: Basics</h2>
         <p>This lesson covers the basics of machine learning including supervised and unsupervised learning.</p>
@@ -104,8 +158,8 @@
               <input type="radio" name="q1" value="c"> a & b.<br>
               <input type="radio" name="q1" value="d"> None of the above.<br><br>
               <p id="quiz1Q1Result"></p>
-              <button type="button" class="submitQuestion" onclick="checkAnswer('quizForm1', 'q1', 'a', 'quiz1Q1Result', 'question2')">Submit</button>
-              <button type="button" class="goQuestion" onclick="navigateQuiz('quizForm1', 'question1', 'question2')" disabled>Next Question</button>
+              <button type="button" class="submitQuestion" data-next="question2">Submit</button>
+              <button type="button" class="goQuestion" data-target="question2" disabled>Next Question</button>
             </div>
             <div id="question2" style="display: none;">
               <label>Question 2: Which algorithm is used for classification?</label><br>
@@ -114,9 +168,9 @@
               <input type="radio" name="q2" value="c"> a & b.<br>
               <input type="radio" name="q2" value="d"> None of the above.<br><br>
               <p id="quiz1Q2Result"></p>
-              <button type="button" class="submitQuestion" onclick="checkAnswer('quizForm1', 'q2', 'a', 'quiz1Q2Result', 'question3')">Submit</button>
-              <button type="button" class="prevQuestion" onclick="navigateQuiz('quizForm1', 'question2', 'question1')">Prev Question</button>
-              <button type="button" class="goQuestion" onclick="navigateQuiz('quizForm1', 'question2', 'question3')" disabled>Next Question</button>
+              <button type="button" class="submitQuestion" data-next="question3">Submit</button>
+              <button type="button" class="prevQuestion" data-target="question1">Prev Question</button>
+              <button type="button" class="goQuestion" data-target="question3" disabled>Next Question</button>
             </div>
             <div id="question3" style="display: none;">
               <label>Question 3: What is overfitting?</label><br>
@@ -125,9 +179,9 @@
               <input type="radio" name="q3" value="c"> a & b.<br>
               <input type="radio" name="q3" value="d"> None of the above.<br><br>
               <p id="quiz1Q3Result"></p>
-              <button type="button" class="submitQuestion" onclick="checkAnswer('quizForm1', 'q3', 'a', 'quiz1Q3Result', 'question4')">Submit</button>
-              <button type="button" class="prevQuestion" onclick="navigateQuiz('quizForm1', 'question3', 'question2')">Prev Question</button>
-              <button type="button" class="goQuestion" onclick="navigateQuiz('quizForm1', 'question3', 'question4')" disabled>Next Question</button>
+              <button type="button" class="submitQuestion" data-next="question4">Submit</button>
+              <button type="button" class="prevQuestion" data-target="question2">Prev Question</button>
+              <button type="button" class="goQuestion" data-target="question4" disabled>Next Question</button>
             </div>
             <div id="question4" style="display: none;">
               <label>Question 4: What is the main goal of supervised learning?</label><br>
@@ -136,14 +190,18 @@
               <input type="radio" name="q4" value="c"> a & b.<br>
               <input type="radio" name="q4" value="d"> None of the above.<br><br>
               <p id="quiz1Q4Result"></p>
-              <button type="button" class="submitQuestion" onclick="checkAnswer('quizForm1', 'q4', 'a', 'quiz1Q4Result', null)">Submit</button>
-              <button type="button" class="prevQuestion" onclick="navigateQuiz('quizForm1', 'question4', 'question3')">Prev Question</button>
+              <button type="button" class="submitQuestion" data-next="question5">Submit</button>
+              <button type="button" class="prevQuestion" data-target="question3">Prev Question</button>
+              <button type="button" class="goQuestion" data-target="question5" disabled>Next Question</button>
             </div>
           </form>
         </div>
         <button class="back" onclick="navigate('quiz1', 'video1')">Back</button>
         <button class="next" onclick="navigate('quiz1', 'lesson2')">Next</button>
       </section>
+
+        <!-- Lesson 2 -->
+
       <section id="lesson2" class="content-section">
         <h2>Lesson 2: Algorithms</h2>
         <p>Introduction to algorithms used in machine learning.</p>
@@ -169,8 +227,8 @@
               <input type="radio" name="q5" value="c"> a & b.<br>
               <input type="radio" name="q5" value="d"> None of the above.<br><br>
               <p id="quiz2Q1Result"></p>
-              <button type="button" class="submitQuestion" onclick="checkAnswer('quizForm2', 'q5', 'a', 'quiz2Q1Result', 'question6')">Submit</button>
-              <button type="button" class="goQuestion" onclick="navigateQuiz('quizForm2', 'question5', 'question6')" disabled>Next Question</button>
+              <button type="button" class="submitQuestion" data-next="question6">Submit</button>
+              <button type="button" class="goQuestion" data-target="question6" disabled>Next Question</button>
             </div>
             <div id="question6" style="display: none;">
               <label>Question 2: Which algorithm is used for regression?</label><br>
@@ -179,9 +237,9 @@
               <input type="radio" name="q6" value="c"> a & b.<br>
               <input type="radio" name="q6" value="d"> None of the above.<br><br>
               <p id="quiz2Q2Result"></p>
-              <button type="button" class="submitQuestion" onclick="checkAnswer('quizForm2', 'q6', 'b', 'quiz2Q2Result', 'question7')">Submit</button>
-              <button type="button" class="prevQuestion" onclick="navigateQuiz('quizForm2', 'question6', 'question5')">Prev Question</button>
-              <button type="button" class="goQuestion" onclick="navigateQuiz('quizForm2', 'question6', 'question7')" disabled>Next Question</button>
+              <button type="button" class="submitQuestion" data-next="question7">Submit</button>
+              <button type="button" class="prevQuestion" data-target="question5">Prev Question</button>
+              <button type="button" class="goQuestion" data-target="question7" disabled>Next Question</button>
             </div>
             <div id="question7" style="display: none;">
               <label>Question 3: What is pruning in decision trees?</label><br>
@@ -190,9 +248,9 @@
               <input type="radio" name="q7" value="c"> a & b.<br>
               <input type="radio" name="q7" value="d"> None of the above.<br><br>
               <p id="quiz2Q3Result"></p>
-              <button type="button" class="submitQuestion" onclick="checkAnswer('quizForm2', 'q7', 'a', 'quiz2Q3Result', 'question8')">Submit</button>
-              <button type="button" class="prevQuestion" onclick="navigateQuiz('quizForm2', 'question7', 'question6')">Prev Question</button>
-              <button type="button" class="goQuestion" onclick="navigateQuiz('quizForm2', 'question7', 'question8')" disabled>Next Question</button>
+              <button type="button" class="submitQuestion" data-next="question8">Submit</button>
+              <button type="button" class="prevQuestion" data-target="question6">Prev Question</button>
+              <button type="button" class="goQuestion" data-target="question8" disabled>Next Question</button>
             </div>
             <div id="question8" style="display: none;">
               <label>Question 4: What is ensemble learning?</label><br>
@@ -201,14 +259,18 @@
               <input type="radio" name="q8" value="c"> a & b.<br>
               <input type="radio" name="q8" value="d"> None of the above.<br><br>
               <p id="quiz2Q4Result"></p>
-              <button type="button" class="submitQuestion" onclick="checkAnswer('quizForm2', 'q8', 'a', 'quiz2Q4Result', null)">Submit</button>
-              <button type="button" class="prevQuestion" onclick="navigateQuiz('quizForm2', 'question8', 'question7')">Prev Question</button>
+              <button type="button" class="submitQuestion" data-next="question9">Submit</button>
+              <button type="button" class="prevQuestion" data-target="question7">Prev Question</button>
+              <button type="button" class="goQuestion" data-target="question9" disabled>Next Question</button>
             </div>
           </form>
         </div>
         <button class="back" onclick="navigate('quiz2', 'video2')">Back</button>
         <button class="next" onclick="navigate('quiz2', 'lesson3')">Next</button>
       </section>
+
+        <!-- Lesson 3 -->
+
       <section id="lesson3" class="content-section">
         <h2>Lesson 3: Models</h2>
         <p>Types of models used in machine learning.</p>
@@ -235,8 +297,8 @@
               <input type="radio" name="q9" value="c"> a & b.<br>
               <input type="radio" name="q9" value="d"> None of the above.<br><br>
               <p id="quiz3Q1Result"></p>
-              <button type="button" class="submitQuestion" onclick="checkAnswer('quizForm3', 'q9', 'a', 'quiz3Q1Result', 'question10')">Submit</button>
-              <button type="button" class="goQuestion" onclick="navigateQuiz('quizForm3', 'question9', 'question10')" disabled>Next Question</button>
+              <button type="button" class="submitQuestion" data-next="question10">Submit</button>
+              <button type="button" class="goQuestion" data-target="question10" disabled>Next Question</button>
             </div>
             <div id="question10" style="display: none;">
               <label>Question 2: Which model is used for clustering?</label><br>
@@ -245,9 +307,9 @@
               <input type="radio" name="q10" value="c"> a & b.<br>
               <input type="radio" name="q10" value="d"> None of the above.<br><br>
               <p id="quiz3Q2Result"></p>
-              <button type="button" class="submitQuestion" onclick="checkAnswer('quizForm3', 'q10', 'a', 'quiz3Q2Result', 'question11')">Submit</button>
-              <button type="button" class="prevQuestion" onclick="navigateQuiz('quizForm3', 'question10', 'question9')">Prev Question</button>
-              <button type="button" class="goQuestion" onclick="navigateQuiz('quizForm3', 'question10', 'question11')" disabled>Next Question</button>
+              <button type="button" class="submitQuestion" data-next="question11">Submit</button>
+              <button type="button" class="prevQuestion" data-target="question9">Prev Question</button>
+              <button type="button" class="goQuestion" data-target="question11" disabled>Next Question</button>
             </div>
             <div id="question11" style="display: none;">
               <label>Question 3: What is regularization in machine learning?</label><br>
@@ -256,9 +318,9 @@
               <input type="radio" name="q11" value="c"> a & b.<br>
               <input type="radio" name="q11" value="d"> None of the above.<br><br>
               <p id="quiz3Q3Result"></p>
-              <button type="button" class="submitQuestion" onclick="checkAnswer('quizForm3', 'q11', 'a', 'quiz3Q3Result', 'question12')">Submit</button>
-              <button type="button" class="prevQuestion" onclick="navigateQuiz('quizForm3', 'question11', 'question10')">Prev Question</button>
-              <button type="button" class="goQuestion" onclick="navigateQuiz('quizForm3', 'question11', 'question12')" disabled>Next Question</button>
+              <button type="button" class="submitQuestion" data-next="question12">Submit</button>
+              <button type="button" class="prevQuestion" data-target="question10">Prev Question</button>
+              <button type="button" class="goQuestion" data-target="question12" disabled>Next Question</button>
             </div>
             <div id="question12" style="display: none;">
               <label>Question 4: What is the purpose of feature scaling?</label><br>
@@ -267,14 +329,18 @@
               <input type="radio" name="q12" value="c"> a & b.<br>
               <input type="radio" name="q12" value="d"> None of the above.<br><br>
               <p id="quiz3Q4Result"></p>
-              <button type="button" class="submitQuestion" onclick="checkAnswer('quizForm3', 'q12', 'a', 'quiz3Q4Result', null)">Submit</button>
-              <button type="button" class="prevQuestion" onclick="navigateQuiz('quizForm3', 'question12', 'question11')">Prev Question</button>
+              <button type="button" class="submitQuestion" data-next="question13">Submit</button>
+              <button type="button" class="prevQuestion" data-target="question11">Prev Question</button>
+              <button type="button" class="goQuestion" data-target="question13" disabled>Next Question</button>
             </div>
           </form>
         </div>
         <button class="back" onclick="navigate('quiz3', 'video3')">Back</button>
         <button class="next" onclick="navigate('quiz3', 'lesson4')">Next</button>
       </section>
+
+        <!-- Lesson 4 -->
+
       <section id="lesson4" class="content-section">
         <h2>Lesson 4: Evaluation</h2>
         <p>Methods to evaluate machine learning models.</p>
@@ -301,8 +367,8 @@
               <input type="radio" name="q13" value="c"> a & b.<br>
               <input type="radio" name="q13" value="d"> None of the above.<br><br>
               <p id="quiz4Q1Result"></p>
-              <button type="button" class="submitQuestion" onclick="checkAnswer('quizForm4', 'q13', 'b', 'quiz4Q1Result', 'question14')">Submit</button>
-              <button type="button" class="goQuestion" onclick="navigateQuiz('quizForm4', 'question13', 'question14')" disabled>Next Question</button>
+              <button type="button" class="submitQuestion" data-next="question14">Submit</button>
+              <button type="button" class="goQuestion" data-target="question14" disabled>Next Question</button>
             </div>
             <div id="question14" style="display: none;">
               <label>Question 2: What is AUC-ROC used for?</label><br>
@@ -311,9 +377,9 @@
               <input type="radio" name="q14" value="c"> a & b.<br>
               <input type="radio" name="q14" value="d"> None of the above.<br><br>
               <p id="quiz4Q2Result"></p>
-              <button type="button" class="submitQuestion" onclick="checkAnswer('quizForm4', 'q14', 'b', 'quiz4Q2Result', 'question15')">Submit</button>
-              <button type="button" class="prevQuestion" onclick="navigateQuiz('quizForm4', 'question14', 'question13')">Prev Question</button>
-              <button type="button" class="goQuestion" onclick="navigateQuiz('quizForm4', 'question14', 'question15')" disabled>Next Question</button>
+              <button type="button" class="submitQuestion" data-next="question15">Submit</button>
+              <button type="button" class="prevQuestion" data-target="question13">Prev Question</button>
+              <button type="button" class="goQuestion" data-target="question15" disabled>Next Question</button>
             </div>
             <div id="question15" style="display: none;">
               <label>Question 3: What is the confusion matrix?</label><br>
@@ -322,9 +388,9 @@
               <input type="radio" name="q15" value="c"> a & b.<br>
               <input type="radio" name="q15" value="d"> None of the above.<br><br>
               <p id="quiz4Q3Result"></p>
-              <button type="button" class="submitQuestion" onclick="checkAnswer('quizForm4', 'q15', 'a', 'quiz4Q3Result', 'question16')">Submit</button>
-              <button type="button" class="prevQuestion" onclick="navigateQuiz('quizForm4', 'question15', 'question14')">Prev Question</button>
-              <button type="button" class="goQuestion" onclick="navigateQuiz('quizForm4', 'question15', 'question16')" disabled>Next Question</button>
+              <button type="button" class="submitQuestion" data-next="question16">Submit</button>
+              <button type="button" class="prevQuestion" data-target="question14">Prev Question</button>
+              <button type="button" class="goQuestion" data-target="question16" disabled>Next Question</button>
             </div>
             <div id="question16" style="display: none;">
               <label>Question 4: What is precision?</label><br>
@@ -333,14 +399,16 @@
               <input type="radio" name="q16" value="c"> a & b.<br>
               <input type="radio" name="q16" value="d"> None of the above.<br><br>
               <p id="quiz4Q4Result"></p>
-              <button type="button" class="submitQuestion" onclick="checkAnswer('quizForm4', 'q16', 'a', 'quiz4Q4Result', null)">Submit</button>
-              <button type="button" class="prevQuestion" onclick="navigateQuiz('quizForm4', 'question16', 'question15')">Prev Question</button>
+              <button type="button" class="submitQuestion" data-next="question17">Submit</button>
+              <button type="button" class="prevQuestion" data-target="question15">Prev Question</button>
+              <button type="button" class="goQuestion" data-target="question17" disabled>Next Question</button>
             </div>
           </form>
         </div>
         <button class="back" onclick="navigate('quiz4', 'video4')">Back</button>
         <button class="next" onclick="navigate('quiz4', 'lesson5')">Next</button>
       </section>
+        <!-- Lesson 5 -->
       <section id="lesson5" class="content-section">
         <h2>Lesson 5: Data Processing</h2>
         <p>Techniques for preprocessing data in machine learning.</p>
@@ -355,8 +423,113 @@
           Your browser does not support the video tag.
         </video>
         <button class="back" onclick="navigate('video5', 'lesson5')">Back</button>
-        <button class="next" onclick="navigate('video5', 'map')">Next</button>
+        <button class="next" onclick="navigate('video5', 'lesson6')">Next</button>
       </section>
+        <!-- Lesson 6 -->
+      <section id="lesson6" class="content-section">
+        <h2>Lesson 6: Data Cleaning</h2>
+        <p>Techniques for preprocessing data in machine learning.</p>
+        <button class="back" onclick="navigate('lesson6', 'video5')">Back</button>
+        <button class="next" onclick="navigate('lesson6', 'video6')">Next</button>
+      </section>
+      <section id="video6" class="content-section">
+        <h2>Video 6</h2>
+        <video controls width="600" id="video6Video">
+          <source src="video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <button class="back" onclick="navigate('video6', 'lesson6')">Back</button>
+        <button class="next" onclick="navigate('video6', 'lesson7')">Next</button>
+      </section>
+
+      <!-- Lesson 7 -->
+      <section id="lesson7" class="content-section">
+      <h2>Lesson 7: DataSet</h2>
+      <p>Techniques for preprocessing data in machine learning.</p>
+      <button class="back" onclick="navigate('lesson7', 'video6')">Back</button>
+      <button class="next" onclick="navigate('lesson7', 'video7')">Next</button>
+    </section>
+    
+    <section id="video7" class="content-section">
+      <h2>Video 7</h2>
+      <video controls width="600" id="video7Video">
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <button class="back" onclick="navigate('video7', 'lesson7')">Back</button>
+      <button class="next" onclick="navigate('video7', 'lesson8')">Next</button>
+    </section>
+      <!-- Lesson 8 -->
+      <section id="lesson8" class="content-section">
+      <h2>Lesson 8: Modeling</h2>
+      <p>Techniques for preprocessing data in machine learning.</p>
+      <button class="back" onclick="navigate('lesson8', 'video7')">Back</button>
+      <button class="next" onclick="navigate('lesson8', 'video8')">Next</button>
+    </section>
+    
+    <section id="video8" class="content-section">
+      <h2>Video 8</h2>
+      <video controls width="600" id="video8Video">
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <button class="back" onclick="navigate('video8', 'lesson8')">Back</button>
+      <button class="next" onclick="navigate('video8', 'lesson9')">Next</button>
+    </section>
+
+      <!-- Lesson 9 -->
+      <section id="lesson9" class="content-section">
+        <h2>Lesson 9: Model performance</h2>
+        <p>Techniques for preprocessing data in machine learning.</p>
+        <button class="back" onclick="navigate('lesson9', 'video8')">Back</button>
+        <button class="next" onclick="navigate('lesson9', 'video9')">Next</button>
+      </section>
+      
+      <section id="video9" class="content-section">
+        <h2>Video 9</h2>
+        <video controls width="600" id="video9Video">
+          <source src="video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <button class="back" onclick="navigate('video9', 'lesson9')">Back</button>
+        <button class="next" onclick="navigate('video9', 'lesson10')">Next</button>
+      </section>
+      <!-- Lesson 10 -->
+      <section id="lesson10" class="content-section">
+        <h2>Lesson 10: Start coding</h2>
+        <p>Techniques for preprocessing data in machine learning.</p>
+        <button class="back" onclick="navigate('lesson10', 'video9')">Back</button>
+        <button class="next" onclick="navigate('lesson10', 'video10')">Next</button>
+      </section>
+      
+      <section id="video10" class="content-section">
+        <h2>Video 19</h2>
+        <video controls width="600" id="video10Video">
+          <source src="video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <button class="back" onclick="navigate('video10', 'lesson10')">Back</button>
+        <button class="next" onclick="navigate('video10', 'lesson11')">Next</button>
+      </section>
+      <!-- Lesson 11 -->
+      <section id="lesson11" class="content-section">
+        <h2>Lesson 11: evaluate the model</h2>
+        <p>Techniques for preprocessing data in machine learning.</p>
+        <button class="back" onclick="navigate('lesson11', 'video10')">Back</button>
+        <button class="next" onclick="navigate('lesson11', 'video11')">Next</button>
+      </section>
+      
+      <section id="video11" class="content-section">
+        <h2>Video 11</h2>
+        <video controls width="600" id="video11Video">
+          <source src="video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <button class="back" onclick="navigate('video11', 'lesson11')">Back</button>
+        <button class="next" onclick="navigate('video11', 'map')">Next</button>
+      </section>
+
+
       <section id="map" class="content-section">
         <h2>The location of the university that can learn ML on it</h2>
         <div class="map-buttons">
@@ -384,18 +557,34 @@
             <!-- Add more paths for other locations -->
           </svg>
         </div>
-        <button class="back" onclick="navigate('map', 'video5')">Back</button>
-        <button class="next" onclick="navigate('map', 'video')">Next</button>
+        <button class="back" onclick="navigate('map', 'video11')">Back</button>
+        <button class="next" onclick="navigate('map', 'video12')">Next</button>
       </section>
-      <section id="video" class="content-section">
-        <h2>End of the course</h2>
+      <section id="video12" class="content-section">
+        <h2>End of the course A</h2>
         <video controls width="600" id="videoMain">
           <source src="video.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-        <button class="back" onclick="navigate('video', 'map')">Back</button>
+        <button class="back" onclick="navigate('video12', 'map')">Back</button>
+        <button class="next" onclick="navigate('video12', 'video13')">Next</button>
+      </section>
+      <section id="video13" class="content-section">
+        <h2>End of the course B</h2>
+        <video controls width="600" id="videoMain">
+          <source src="video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <button class="back" onclick="navigate('video13', 'video12')">Back</button>
       </section>
     </main>
   </div>
+  <!-- <script>
+    function toggleMenuHeight() {
+    const menu = document.getElementById('courseMenu');
+    menu.classList.toggle('expanded');
+  }
+  </script> -->
+  <script src="kh.js" ></script>
 </body>
 </html>
