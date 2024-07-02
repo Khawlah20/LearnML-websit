@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelectorAll('.submitQuestion').forEach(button => {
     button.addEventListener('click', function() {
-      const form = button.closest('form');
       const questionDiv = button.closest('div');
       const questionName = Array.from(questionDiv.querySelectorAll('input[type=radio]'))
         .filter(input => input.checked)[0]?.name;
@@ -34,9 +33,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add correct answers for additional questions as needed
       }[questionName];
 
-      const userAnswer = form.elements[questionName]?.value;
-      const resultId = questionDiv.querySelector('p').id;
-      const result = document.getElementById(resultId);
+      const userAnswer = questionDiv.querySelector(`input[name=${questionName}]:checked`)?.value;
+      const result = questionDiv.querySelector('p');
 
       if (userAnswer === correctAnswer) {
         result.textContent = "Correct!";
@@ -46,9 +44,23 @@ document.addEventListener('DOMContentLoaded', function() {
           goButton.disabled = false;
         }
       } else {
-        result.textContent = "Incorrect. Please try again.";
+        result.textContent = "Incorrect. Please try again, you should submit the correct answer to go to the next question.";
         questionDiv.setAttribute('data-correct', 'false');
       }
+    });
+  });
+
+  document.querySelectorAll('.goQuestion').forEach(button => {
+    button.addEventListener('click', function() {
+      const target = button.getAttribute('data-target');
+      showQuestion(target);
+    });
+  });
+
+  document.querySelectorAll('.prevQuestion').forEach(button => {
+    button.addEventListener('click', function() {
+      const target = button.getAttribute('data-target');
+      showQuestion(target);
     });
   });
 
@@ -65,6 +77,13 @@ function showSection(sectionId) {
     });
   });
   document.getElementById(sectionId).style.display = 'block';
+}
+
+function showQuestion(questionId) {
+  document.querySelectorAll('[id^=question]').forEach(question => {
+    question.style.display = 'none';
+  });
+  document.getElementById(questionId).style.display = 'block';
 }
 
 function toggleDropdown(dropdownId) {
