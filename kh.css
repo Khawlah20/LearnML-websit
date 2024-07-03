@@ -167,7 +167,7 @@ video {
 }
 
 #mapContainer {
-  width: 100%;
+  width: 800px;
   height: 600px;
 }
 
@@ -228,79 +228,72 @@ button.next {
   left: 55%;
   transform: translateX(-50%);
 }
+@media (max-width: 428px) {
+  header {
+    padding: 10px 5px;
+  }
 
-/* Media Queries for responsiveness */
+  header h1 {
+    font-size: 20px;
+  }
 
-/* For tablets */
-@media (max-width: 768px) {
+  #toggleMenuBtn {
+    display: inline-block;
+  }
+
   nav {
-    flex: 0 0 150px;
+    flex: 0 0 100%;
+    position: relative;
+    top: 0;
+  }
+
+
+  nav ul li {
+    padding: 5px;
+    text-align: center;
+  }
+
+  nav ul li a {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  nav .dropdown .dropdown-content {
+    position: static;
+    box-shadow: none;
   }
 
   .container {
     flex-direction: column;
+    margin-top: 60px;
   }
 
   main {
     padding: 10px;
-    width: 97.5%;
   }
 
-  #mapContainer {
-    height: 400px;
+  .quiz button,
+  .map-buttons button {
+    width: 50%;
+    margin-top: 5px;
   }
 
-  .content-section {
-    min-height: 500px;
-  }
-}
 
-/* For mobile phones */
-@media (max-width: 480px) {
-  header h1 {
-    font-size: 18px;
-  }
-
-  #toggleMenuBtn img {
-    width: 20px;
-  }
-
-  nav {
-    flex: 0 0 100px;
-  }
-
-  .container {
-    flex-direction: column;
-  }
-
-  main {
-    order: 1;
-    padding: 5px;
-  }
-
-  .quiz button.submitQuestion,
-  .quiz button.prevQuestion,
-  .quiz button.goQuestion {
-    padding: 5px;
-    font-size: 14px;
-  }
-
-  #mapContainer {
-    height: 300px;
-  }
-
-  .content-section {
-    min-height: 400px;
-  }
-
-  button.back {
-    bottom: 20px;
+  button.next {
     left: 50%;
     transform: translateX(-50%);
   }
-   button.next {
-    bottom: 20px;
-    right: 50%;
+  button.back {
+      left: 30%;
     transform: translateX(-50%);
   }
-}
+
+  .content-section {
+    padding-bottom: 100px;
+  }
+  
+  .mapContainer {
+  top: 40px;
+  width: 500px;
+  height: 600px;
+}}
