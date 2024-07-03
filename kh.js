@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
           goButton.disabled = false;
         }
       } else {
-        result.textContent = "Incorrect. Please try again, you should submit the correct answer to go to the next question.";
+        result.textContent = "Incorrect. Please try again , you should to submit correct answer to go to the next quesion .";
         questionDiv.setAttribute('data-correct', 'false');
       }
     });
@@ -129,3 +129,14 @@ function toggleMenuHeight() {
   const menu = document.getElementById('courseMenu');
   menu.classList.toggle('expanded');
 }
+
+function toggleMenu() {
+  const navLinks = document.getElementById('nav-links');
+  navLinks.classList.toggle('active');
+}
+
+function toggleMenuHeight() {
+  const menu = document.getElementById('courseMenu');
+  menu.classList.toggle('expanded');
+}
+
