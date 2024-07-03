@@ -21,6 +21,7 @@
         <h2>Course Menu</h2>
         <button class="toggle-btn" onclick="toggleMenuHeight()">-</button>
       </div>
+      <ul id="nav-links">
       <ul id="menuList">
         <li><a href="javascript:void(0)" class="menu-link" onclick="showSection('introduction')">Introduction</a></li>
         <!-- Lesson 1 -->
@@ -119,7 +120,9 @@
         <li><a href="javascript:void(0)" class="menu-link" onclick="showSection('video12')">Video A</a></li>
         <li><a href="javascript:void(0)" class="menu-link" onclick="showSection('video13')">Video B</a></li>
       </ul>
+    </ul>
     </nav>
+
     <main>
       <section id="introduction" class="content-section">
         <h2>Introduction</h2>
@@ -544,7 +547,7 @@
           <!-- Add more buttons as needed -->
         </div>
         <div id="mapContainer">
-          <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
             <image href="map.gif" width="800" height="600" />
             <!-- Example pins -->
             <path id="kau" d="M100,130 L110,130 L105,150 Z" fill="green" onclick="showLocation('KAU')" visibility="hidden"></path>
